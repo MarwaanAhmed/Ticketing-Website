@@ -13,6 +13,23 @@ attribute {
   type = "S"
 }
 
+attribute {
+  name = var.gsi_hash_key
+  type = "S"
+}
+
+attribute {
+  name = var.gsi_range_key
+  type = "S"
+}
+
+ global_secondary_index {
+    name               = var.gsi_name
+    hash_key           = var.gsi_hash_key
+    range_key          = var.gsi_range_key
+    projection_type    = "ALL"
+  }
+
 tags = {
   Project = "scalable-ticketing-website"
   ManagedBy = "Terraform" 
