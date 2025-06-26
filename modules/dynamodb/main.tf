@@ -9,7 +9,7 @@ point_in_time_recovery {
 }
 
 attribute {
-  name = "TicketID"
+  name = var.hash_key
   type = "S"
 }
 
