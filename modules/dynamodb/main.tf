@@ -13,4 +13,9 @@ attribute {
   type = "S"
 }
 
+tags = {
+  Project = "scalable-ticketing-website"
+  ManagedBy = "Terraform" 
+}
+
 }
