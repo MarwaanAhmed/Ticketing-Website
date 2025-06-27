@@ -23,6 +23,9 @@ attribute {
   type = "S"
 }
 
+stream_enabled = var.stream_enabled
+stream_view_type = var.stream_view_type
+
  global_secondary_index {
     name               = var.gsi_name
     hash_key           = var.gsi_hash_key
