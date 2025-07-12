@@ -17,6 +17,6 @@ resource "aws_iam_role" "lambda_function" {
   })
 
   tags = {
-    tag-key = "This function allows Lambda to "
+    tag-key = "Role allows Lambda to Create tickets into a database"
   }
 }

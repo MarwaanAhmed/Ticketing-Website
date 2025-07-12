@@ -3,3 +3,10 @@ variable "database_table_name" {
   type = string
   default = "ticketing_database"
 }
+
+variable "function_name_iam_role" {
+  description = "This is the name for my IAM role"
+  type = string
+  default = "TicketCreatorRole"
+  
+}
