@@ -1,7 +1,7 @@
-# IAM Role
+# IAM ROLE FOR LAMBDA
 
 resource "aws_iam_role" "lambda_function" {
-  name = "TicketCreatorRole"
+  name = var.function_name_iam_role
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -19,4 +19,32 @@ resource "aws_iam_role" "lambda_function" {
   tags = {
     tag-key = "Role allows Lambda to Create tickets into a database"
   }
+}
+
+#IAM POLICY FOR LAMBDA
+
+resource "aws_iam_policy" "lambda_policy" {
+  name        = "lambda_policy"
+  description = "This policy will write into dynamodb table and create logs"
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = [
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents",
+        ]
+        Effect   = "Allow"
+        Resource = "*"
+      },
+    #STATEMENT FOR DYNAMODB WRITES
+    {
+            Action = "dynamodb:PutItem",
+            Effect = "Allow"
+            Resource = ""
+     }
+    ]
+  })
 }
