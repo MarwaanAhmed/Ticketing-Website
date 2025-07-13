@@ -27,3 +27,13 @@ variable "function_name" {
   description = "A unique name for the Lambda function and its associated resources."
   type        = string
 }
+
+variable "source_code_filename" {
+  description = "The path to the zipped source code file."
+  type        = string
+}
+
+variable "source_code_hash" {
+  description = "The hash of the source code file to trigger updates."
+  type        = string
+}
