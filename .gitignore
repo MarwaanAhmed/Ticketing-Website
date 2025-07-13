@@ -40,3 +40,6 @@ terraform.rc
 
 # Ignore Python virtual environments
 .venv/
+
+#Ignore dist file
+/dist/
