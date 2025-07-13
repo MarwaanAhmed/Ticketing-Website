@@ -18,6 +18,11 @@ variable "dynamodb_table_arn" {
   
 }
 
+variable "dynamodb_table_name" {
+  description = "The name of the DynamoDB table for the Lambda to access."
+  type        = string
+}
+
 variable "function_name" {
   description = "A unique name for the Lambda function and its associated resources."
   type        = string
