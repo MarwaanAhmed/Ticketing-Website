@@ -10,3 +10,15 @@ variable "function_name_iam_role" {
   default = "TicketCreatorRole"
   
 }
+
+variable "dynamodb_table_arn" {
+  description = "The ARN for my DynamoDB table"
+  type = string
+  default = ""
+  
+}
+
+variable "function_name" {
+  description = "A unique name for the Lambda function and its associated resources."
+  type        = string
+}
