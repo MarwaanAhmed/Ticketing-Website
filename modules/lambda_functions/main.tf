@@ -30,6 +30,7 @@ resource "aws_iam_policy" "lambda_policy" {
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
+    #STATEMENT FOR CLOUD WATCH LOGS
       {
         Action = [
           "logs:CreateLogGroup",
@@ -43,7 +44,7 @@ resource "aws_iam_policy" "lambda_policy" {
     {
             Action = "dynamodb:PutItem",
             Effect = "Allow"
-            Resource = ""
+            Resource = var.dynamodb_table_arn
      }
     ]
   })
