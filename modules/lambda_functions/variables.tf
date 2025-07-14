@@ -14,8 +14,6 @@ variable "function_name_iam_role" {
 variable "dynamodb_table_arn" {
   description = "The ARN for my DynamoDB table"
   type = string
-  default = ""
-  
 }
 
 variable "dynamodb_table_name" {
