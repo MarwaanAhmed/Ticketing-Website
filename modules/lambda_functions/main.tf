@@ -30,7 +30,8 @@ resource "aws_iam_policy" "lambda_policy" {
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
-    #STATEMENT FOR CLOUD WATCH LOGS
+
+#STATEMENT FOR CLOUD WATCH LOGS
       {
         Action = [
           "logs:CreateLogGroup",
@@ -40,7 +41,7 @@ resource "aws_iam_policy" "lambda_policy" {
         Effect   = "Allow"
         Resource = "*"
       },
-    #STATEMENT FOR DYNAMODB WRITES
+#STATEMENT FOR DYNAMODB WRITES
     {
             Action = "dynamodb:PutItem",
             Effect = "Allow"
@@ -55,4 +56,27 @@ resource "aws_iam_policy" "lambda_policy" {
 resource "aws_iam_role_policy_attachment" "lambda_attachment" {
   role       = aws_iam_role.lambda_function.name
   policy_arn = aws_iam_policy.lambda_policy.arn
+}
+
+#LAMBDA FUNCTION
+
+resource "aws_lambda_function" "example" {
+  filename         = var.source_code_filename
+  function_name    = var.function_name
+  role             = aws_iam_role.lambda_function.arn
+  handler          = "main.lambda_handler"
+  source_code_hash = var.source_code_hash
+
+  runtime = "python3.12"
+
+  environment {
+    variables = {
+      DYNAMODB_TABLE_NAME = var.database_table_name
+    }
+  }
+
+  tags = {
+    Environment = "production"
+    Application = "example"
+  }
 }
