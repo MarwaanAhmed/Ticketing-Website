@@ -1,6 +1,6 @@
 # IAM ROLE FOR LAMBDA
 
-resource "aws_iam_role" "lambda_function" {
+resource "aws_iam_role" "lambda_role" {
   name = var.function_name_iam_role
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -54,16 +54,16 @@ resource "aws_iam_policy" "lambda_policy" {
 #IAM POLICY ATTACHMENT
 
 resource "aws_iam_role_policy_attachment" "lambda_attachment" {
-  role       = aws_iam_role.lambda_function.name
+  role       = aws_iam_role.lambda_role.arn
   policy_arn = aws_iam_policy.lambda_policy.arn
 }
 
 #LAMBDA FUNCTION
 
-resource "aws_lambda_function" "example" {
+resource "aws_lambda_function" "lambda_function" {
   filename         = var.source_code_filename
   function_name    = var.function_name
-  role             = aws_iam_role.lambda_function.arn
+  role             = aws_iam_role.lambda_role.arn
   handler          = "main.lambda_handler"
   source_code_hash = var.source_code_hash
 
@@ -74,9 +74,5 @@ resource "aws_lambda_function" "example" {
       DYNAMODB_TABLE_NAME = var.database_table_name
     }
   }
-
-  tags = {
-    Environment = "production"
-    Application = "example"
-  }
+  
 }
