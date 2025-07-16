@@ -1,5 +1,12 @@
 module "dynamodb" {
   source = "./modules/dynamodb"
+  table_name = var.database_name
+  hash_key = var.database_hash_key
+  gsi_name = var.database_gsi
+  gsi_range_key = var.database_gsi_range_key
+  gsi_hash_key = var.database_gsi_hash_key
+  stream_enabled = var.database_stream_enabled
+  stream_view_type = var.database_stream_view_type
  }
 
 
