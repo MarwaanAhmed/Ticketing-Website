@@ -1,3 +1,4 @@
+# DYNAMODB VARIABLES
 variable "database_name" {
   description = "The name for the main tickeitng database"
   type        = string
@@ -38,5 +39,14 @@ variable "database_stream_enabled" {
     description = "This will determine what stream view type will be logged for the main ticketing database"
     type = string
     default = "NEW_IMAGE"
+    
+  }
+
+  # LAMBDA VARIABLES
+
+  variable "create_ticket_function_name" {
+    description = "Name for the creat ticket Function name."
+    type = string
+    default = "create_ticket"
     
   }

@@ -19,7 +19,7 @@ data "archive_file" "create_ticket_zip" {
 
 module "create_ticket_lambda_function" {
   source = "./modules/lambda_functions"
-  function_name = "create_function"
+  function_name = var.create_ticket_function_name
   dynamodb_table_name = module.dynamodb.table_name
   dynamodb_table_arn  = module.dynamodb.table_arn
   source_code_filename = data.archive_file.create_ticket_zip.output_path
