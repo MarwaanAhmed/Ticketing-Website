@@ -2,7 +2,7 @@
 variable "database_name" {
   description = "The name for the main tickeitng database"
   type        = string
-  default     = "Ticketing-Website"
+  default     = "Ticketing-database"
 }
 
 variable "database_hash_key" {
@@ -20,13 +20,13 @@ variable "database_gsi" {
 variable "database_gsi_range_key" {
     description = "the name for the GSI range key for the main database"
     type = string
-    default = "CreatedAt" 
+    default = "UserID" 
 }
 
 variable "database_gsi_hash_key" {
     description = "The name for the GSI hash key for the main database"
     type = string
-    default = "UserID"
+    default = "EventID"
 }
 
 variable "database_stream_enabled" {
