@@ -25,3 +25,9 @@ module "create_ticket_lambda_function" {
   source_code_filename = data.archive_file.create_ticket_zip.output_path
   source_code_hash     = data.archive_file.create_ticket_zip.output_base64sha256
 }
+
+module "api_gateway" {
+  source = "./modules/api_gateway"
+  api_name = var.api_name
+  lambda_arn = module.create_ticket_lambda_function.lambda_function_arn
+}
