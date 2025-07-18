@@ -50,3 +50,12 @@ variable "database_stream_enabled" {
     default = "create_ticket"
     
   }
+
+  # API GATEWAY VARIABLE
+
+  variable "api_name" {
+    description = "the name for the api gateway for the ticketing website"
+    type = string
+    default = "ticketing-api"
+  }
+
