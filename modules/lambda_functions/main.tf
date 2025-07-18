@@ -46,7 +46,13 @@ resource "aws_iam_policy" "lambda_policy" {
             Action = "dynamodb:PutItem",
             Effect = "Allow"
             Resource = var.dynamodb_table_arn
-     }
+     },
+#STATEMENT FOR SENDING EMAILS 
+      {
+        Action   = "ses:SendEmail"
+        Effect   = "Allow"
+        Resource = "*"
+      },
     ]
   })
 }
