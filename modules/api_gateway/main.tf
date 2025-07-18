@@ -20,4 +20,9 @@ resource "aws_apigatewayv2_stage" "v1_stage" {
   api_id = aws_apigatewayv2_api.create_ticket_api.id
   name   = "v1"
   auto_deploy = true
+
+  default_route_settings {
+    throttling_burst_limit = 50
+    throttling_rate_limit = 100
+  }
 }
