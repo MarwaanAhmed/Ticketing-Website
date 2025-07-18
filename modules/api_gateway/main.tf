@@ -15,3 +15,9 @@ resource "aws_apigatewayv2_route" "create_ticket_route" {
 
   target = "integrations/${aws_apigatewayv2_integration.create_ticket_integration.id}"
 }
+
+resource "aws_apigatewayv2_stage" "v1_stage" {
+  api_id = aws_apigatewayv2_api.create_ticket_api.id
+  name   = "v1"
+  auto_deploy = true
+}
